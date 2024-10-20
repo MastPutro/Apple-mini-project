@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Apel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+            padding: 50px;
+        }
+        .square {
+            height: auto;
+            width: 40%;
+            background-color: #f6ffa3;
+        }
+        h1 {
+            padding-top: 20px;
+        }
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background: #ffffff;
+            max-width: 300px;
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+            margin: 20px 0;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="square">
+        <h1>Klasifikasi Kematangan Apel</h1>
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Prediksi</button>
+        </form>
+
+        {% if prediction %}
+            <h2>Prediksi: {{ prediction }}</h2>
+            <img src="{{ img_path }}" alt="Uploaded Image">
+        {% endif %}
+    </div>
+</body>
+</html>
